@@ -1,5 +1,13 @@
+// Declaracion de variable para nombre
+let nameInput = "";
+
+// Declaracion variable numero de eventos
+let eventNumber = 0;
+let counter = 0;
+
 // Declaracion de lista de eventos
 let toDoList = [];
+
 
 // Declaracion de funciones
 class ToDo {
@@ -13,39 +21,55 @@ class ToDo {
 
 function populateToDoList() {
     let todo1 = {
-        content: "Realizar la primera preentrega",
-        category: "Personal",
+        content: prompt("Ingresa la tarea a realizar"),
+        category: prompt("Trabajo o Personal?"),
         done: false,
-        createdAt: new Date('2022-09-24'),
+        createdAt: new Date(),
         }
     toDoList.push(todo1);
-    let extratoDo = String(prompt("Desea agregar otro evento?"));
-    while (extratoDo != "no") {
-        let todo2 = new ToDo(prompt("Ingresa la tarea a realizar"), prompt("Trabajo o Personal?"), false, new Date('2022-09-24'));
-        toDoList.push(todo2);
-        extratoDo = String(prompt("Desea agregar otro evento?"));
+}
+
+// Nombre de la persona que usara la agenda
+while (nameInput == "") {
+    nameInput = prompt("Ingrese su nombre");
+
+    if (nameInput == "") {
+        alert("Por favor no deje este campo en blanco, introduzca un nombre valido");
     }
-
-    return 0;
+    else {
+        console.log("Su nombre es" + " " + nameInput);
+    }
 }
 
-// Constante nombre de la persona que usara la agenda
-const nameInput = prompt("Ingrese su nombre");
+eventNumber = prompt("Introduzca el numero de eventos a agregar")
 
-if (nameInput == "") {
-    alert("Por favor no deje este campo en blanco, introduzca un nombre valido");
-}
-else {
-    console.log("Su nombre es" + " " + nameInput);
-}
+
 
 // Algoritmo para agregar eventos y mostrarlos en la consola
 
-if (toDoList.length == 0) {
+while (counter < eventNumber) {
     populateToDoList();
+    counter++;
 }
 
 console.log(toDoList);
 
 
+// Algoritmo para marcar tareas como completadas
+toDoList.forEach(function(toDo) {
 
+    if (!toDo.done) {
+        let completion = prompt("Se completo el evento" + " " + toDo.content +"?");
+            if (completion == "si") {
+                toDo.done = true;
+            }
+    }
+});
+
+console.log(toDoList);
+
+// Algoritmo para encontrar eventos
+let eventSearch = prompt("Escriba el evento que desea buscar");
+const eventFinder = toDoList.find(toDo => toDo.content == eventSearch);
+
+console.log(eventFinder);
