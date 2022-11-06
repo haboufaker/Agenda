@@ -185,3 +185,16 @@ window.addEventListener('load', () => {
     displayToDos();
 })
 
+
+//Algoritmo para el modo oscuro
+let icon = document.getElementById('icon')
+
+icon.onclick = function() {
+    document.body.classList.toggle("darkTheme");
+    if (document.body.classList.contains("darkTheme")) {
+        icon.src = "./assets/sun.png";
+    }
+    else {
+        icon.src = "./assets/moon.png";
+    }
+}

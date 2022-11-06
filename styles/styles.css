@@ -3,15 +3,27 @@
     --primary: #66023c;
     --business: #3A82EE;
     --personal: var(--primary);
+    --boxPrimary: #FFF;
     --light: #EEE;
     --grey: #888;
     --dark: #313154;
-    --danger: #ff5b57;
+    --danger: #bb2124;
 
     --shadow: 0 1px 3px rgba(0, 0 , 0 ,0.1);
 
     --businessGlow: 0px 0px 4px rgba(58, 130, 238, 0.75);
     --personalGlow: 0px 0px 4px rgba(234, 64, 164, 0.75);
+}
+
+
+/*Modo Oscuro*/
+.darkTheme {
+    --primary: #ff8906;
+    --boxPrimary: #16161a;
+    --light: #72757e;
+    --grey: #EEE;
+    --dark: #EEE;
+    --danger: #e53170;
 }
 
 /*Reset*/
@@ -58,8 +70,11 @@ h4 {
 }
 
 /*Saludo personalizado*/
+
+
 .greeting .title {
     display: flex;
+    align-items: center;
 }
 
 .greeting .title input {
@@ -74,6 +89,12 @@ h4 {
     font-weight: 700;
 }
 
+/*Modo oscuro*/
+#icon {
+    width: 1.875rem;
+    cursor: pointer;
+}
+
 /*Creador de eventos*/
 .createToDo input[type="text"] {
     display: block;
@@ -81,7 +102,7 @@ h4 {
     font-size: 1.125rem;
     padding: 1rem 1.5rem;
     color: var(--dark);
-    background-color: #FFF;
+    background-color: var(--boxPrimary);
     border-radius: 0.5rem;
     box-shadow: var(--shadow);
 }
@@ -99,7 +120,7 @@ h4 {
     align-items: center;
     justify-content: center;
     padding: 1.5rem;
-    background-color: #FFF;
+    background-color: var(--boxPrimary);
     border-radius: 0.5rem;
     box-shadow: var(--shadow);
     cursor: pointer;
@@ -159,7 +180,7 @@ input:checked ~ .bubble::after {
     display: block;
     width: 100%;
     padding: 1rem 1.5rem;
-    color: #FFF;
+    color: var(--boxPrimary);
     background-color: var(--primary);
     border-radius: 0.5rem;
     box-shadow: var(--personalGlow);
@@ -179,7 +200,7 @@ input:checked ~ .bubble::after {
 .toDoList .toDoItem {
     display: flex;
     align-items: center;
-    background-color: #FFF;
+    background-color: var(--boxPrimary);
     padding: 1rem;
     border-radius: 0.5rem;
     box-shadow: var(--shadow);
@@ -198,7 +219,8 @@ input:checked ~ .bubble::after {
 
 .toDoItem .toDoContent input {
     color: var(--dark);
-    font-size: 1.1.25rem;
+    font-size: 1.125rem;
+    margin-right: 1rem;
 }
 
 .toDoItem .actions {
@@ -210,7 +232,7 @@ input:checked ~ .bubble::after {
     display: block;
     padding: 0.5rem;
     border-radius: 0.25rem;
-    color: #FFF;
+    color: var(--boxPrimary);
     cursor: pointer;
     transition: 0.1s ease-in-out;
 }
@@ -231,4 +253,26 @@ input:checked ~ .bubble::after {
 .toDoItem.done .toDoContent input {
     text-decoration: line-through;
     color: var(--grey);
+}
+
+@media screen and (max-width: 490px) {
+    .greeting .title, .greeting .title input {
+        font-size: 1.125rem;
+    }
+    .toDoItem .toDoContent input {
+        font-size: 0.75rem;
+        max-width: 100px;
+    }
+}
+
+@media screen and (max-width: 415px) {
+    .greeting .title, .greeting .title input {
+        font-size: 1rem;
+    }
+    .createToDo input[type="text"] {
+        font-size: 1rem;
+    }
+    .toDoItem .toDoContent input {
+        max-width: 50px;
+    }
 }
